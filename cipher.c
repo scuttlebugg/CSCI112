@@ -57,36 +57,82 @@ congress.txt with shift of 1
 
 #define SIZECONGRESS 500
 
-void processFile(char[]);
+int processFile(char[]);
+void cipher(char[]);
+void outputCode(char[]);
 
 int main() {
 	char congressArray[SIZECONGRESS];
-	
+
 	//get text from congress.txt
 	processFile(congressArray);
 
-	//check for successful file read, conversion, exclusions, and array output
+	//check for successful file read, upper, exclusions, and array output.
 	printf(congressArray);
+	printf("\n");
+	//accept amount to shift and put into null terminated char array
+	cipher(congressArray);
+
+	//check for proper offset of values
+	printf(congressArray);
+	printf("\n");
+
+	outputCode(congressArray);
 
 	return 0;
 }
 
-void processFile(char congressArray[]) {									//reads to congressArray, puts all uppercase, discards all punctuation & blanks
-	int index; 
+int processFile(char congressArray[]) {									//reads to congressArray, puts all uppercase, discards all punctuation & blanks
+	int index, end, counter;
+	char string[1000];
 	FILE *congressFile;
 
 	if (!(congressFile = fopen("congress.txt", "r"))) {					//test for file open error
 		printf("Code file could not be opened.\n");
 		exit(1);
 	}
-		while (fgets(congressArray, sizeof congressArray, congressFile) != NULL) {
+		while (!feof(congressFile)) {
+			fgets(string, SIZECONGRESS, congressFile);
 
-			for (index = 0; index < SIZECONGRESS; index++) {					//puts codefile info into codeArray
-				if (isalpha(congressArray[index]) == 1) {
-					congressArray[index] = toupper(congressArray[index]);
-					congressArray[index] = getc(congressFile);
+			end = strlen(string);
+
+			for (counter = -1, index = -1; index < end; index++) {					//puts codefile info into codeArray
+				if (string[index] >= 65 && string[index <= 90]) {
+					congressArray[++counter] = (toupper(string[index]));
 				}
-				fclose(congressFile);
+				else if (string[index] >= 97 && string <= 122) {
+					congressArray[++counter] = string[index] - 0;
+				}
+			}
+			congressArray[++counter] = '\0';
+			fclose(congressFile);
+
+			return strlen(congressArray);
 			}
 		}
+
+
+void cipher(char congressArray[]) {
+	int offsetValue = 0;
+	for (unsigned int index = 0; index < strlen(congressArray); index++) {
+		if (congressArray[index] > 77) {
+			congressArray[index] -= 13;
+		}
+		else if (congressArray[index] <= 77) {
+			congressArray[index] += 13;
+		}
 	}
+}
+
+void outputCode(char congressArray[]) {
+	for (unsigned int row = 0; row < strlen(congressArray); row++) {
+		if (row % 6 == 0) {
+			printf(" ");
+		}
+		if (row % 60 == 0) {
+			printf("\n");
+		}
+			printf("%c", congressArray);
+		}
+	}
+
