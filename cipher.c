@@ -46,6 +46,7 @@ Design (Requires one level of step-wise refinement for all steps)
 
 Testing (Minimum of one test case)
 congress.txt with shift of 1 
+--outputs as book shows! Huzzah!
 
 *********************************************************************************************/
 
@@ -67,51 +68,55 @@ int main() {
 	//get text from congress.txt
 	processFile(congressArray);
 
-	//check for successful file read, upper, exclusions, and array output.
+	/*check for successful file read, upper, exclusions, and array output.
 	printf(congressArray);
-	printf("\n");
+	printf("\n");*/
+
 	//accept amount to shift and put into null terminated char array
 	cipher(congressArray);
 
-	//check for proper offset of values
+	/*check for proper offset of values
 	printf(congressArray);
-	printf("\n");
+	printf("\n");*/
 
 	outputCode(congressArray);
 
 	return 0;
 }
 
-int processFile(char congressArray[]) {									//reads to congressArray, puts all uppercase, discards all punctuation & blanks
+//reads to congressArray, puts all uppercase, discards all punctuation & blanks
+int processFile(char congressArray[]) {
 	int index, end, counter;
 	char string[1000];
 	FILE *congressFile;
 
-	if (!(congressFile = fopen("congress.txt", "r"))) {					//test for file open error
+	//test for file open error
+	if (!(congressFile = fopen("congress.txt", "r"))) {
 		printf("Code file could not be opened.\n");
 		exit(1);
 	}
-		while (!feof(congressFile)) {
-			fgets(string, SIZECONGRESS, congressFile);
+	while (!feof(congressFile)) {
+		fgets(string, SIZECONGRESS, congressFile);
 
-			end = strlen(string);
+		end = strlen(string);
 
-			for (counter = -1, index = -1; index < end; index++) {					//puts codefile info into codeArray
-				if (string[index] >= 65 && string[index <= 90]) {
-					congressArray[++counter] = (toupper(string[index]));
-				}
-				else if (string[index] >= 97 && string <= 122) {
-					congressArray[++counter] = string[index] - 0;
-				}
+		//puts codefile info into codeArray
+		for (counter = -1, index = -1; index < end; index++) {
+			if (string[index] >= 65 && string[index <= 90]) {
+				congressArray[++counter] = (toupper(string[index]));
 			}
-			congressArray[++counter] = '\0';
-			fclose(congressFile);
-
-			return strlen(congressArray);
+			else if (string[index] >= 97 && string <= 122) {
+				congressArray[++counter] = string[index] - 0;
 			}
 		}
+		congressArray[++counter] = '\0';
+		fclose(congressFile);
 
+		return strlen(congressArray);
+	}
+}
 
+//calculates shift of 13 with either addition or substraction, depending on the letter
 void cipher(char congressArray[]) {
 	int offsetValue = 0;
 	for (unsigned int index = 0; index < strlen(congressArray); index++) {
@@ -124,15 +129,21 @@ void cipher(char congressArray[]) {
 	}
 }
 
+//outputs to terminal and .txt file in the 10 rows of 5 char format.
 void outputCode(char congressArray[]) {
-	for (unsigned int row = 0; row < strlen(congressArray); row++) {
-		if (row % 6 == 0) {
-			printf(" ");
-		}
-		if (row % 60 == 0) {
-			printf("\n");
-		}
-			printf("%c", congressArray);
-		}
-	}
+	FILE *fp;
+	fp = fopen("csis.txt", "w");
 
+	for (unsigned int row = 0; row < strlen(congressArray); row++) {
+		if (row % 5 == 0) {
+			printf(" ");
+			fprintf(fp, " ");
+		}
+		if (row % 50 == 0) {
+			printf("\n");
+			fprintf(fp, "\n");
+		}
+		printf("%c", congressArray[row]);
+		fprintf(fp, "%c", congressArray[row]);
+	}
+}
