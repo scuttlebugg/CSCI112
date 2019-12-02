@@ -1,0 +1,31 @@
+Enter grades 0 - 100 to average separated by spaces, followed by -1: 
+78
+93
+45
+88
+89
+-1
+
+Your average grade is 78.60
+Enter grades 0 - 100 to average separated by spaces, followed by -1: 
+87
+68
+100
+-1
+
+Your average grade is 85.00
+Enter grades 0 - 100 to average separated by spaces, followed by -1: 
+84
+86
+90
+86
+96
+68
+82
+-1
+
+Your average grade is 84.57
+Enter grades 0 - 100 to average separated by spaces, followed by -1: 
+-1
+
+Your average grade is -nan(ind)

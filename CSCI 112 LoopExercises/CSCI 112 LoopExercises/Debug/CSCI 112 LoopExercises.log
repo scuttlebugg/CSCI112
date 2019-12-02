@@ -1,0 +1,5 @@
+﻿  template.c
+c:\users\hannah\source\repos\csci 112 loopexercises\csci 112 loopexercises\template.c(85): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+  c:\users\hannah\source\repos\csci 112 loopexercises\csci 112 loopexercises\template.c(85): note: command-line arguments:  see previous definition of '_CRT_SECURE_NO_WARNINGS'
+  CSCI 112 LoopExercises.vcxproj -> C:\Users\Hannah\source\repos\CSCI 112 LoopExercises\Debug\CSCI 112 LoopExercises.exe
+  CSCI 112 LoopExercises.vcxproj -> C:\Users\Hannah\source\repos\CSCI 112 LoopExercises\Debug\CSCI 112 LoopExercises.pdb (Full PDB)
