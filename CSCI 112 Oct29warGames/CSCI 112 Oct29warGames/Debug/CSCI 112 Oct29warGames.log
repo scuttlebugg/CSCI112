@@ -1,0 +1,4 @@
+﻿  template.c
+c:\users\hannah\source\repos\csci 112 oct29wargames\csci 112 oct29wargames\template.c(123): warning C4716: 'printGrid': must return a value
+  CSCI 112 Oct29warGames.vcxproj -> C:\Users\Hannah\source\repos\CSCI 112 Oct29warGames\Debug\CSCI 112 Oct29warGames.exe
+  CSCI 112 Oct29warGames.vcxproj -> C:\Users\Hannah\source\repos\CSCI 112 Oct29warGames\Debug\CSCI 112 Oct29warGames.pdb (Full PDB)
