@@ -1,0 +1,6 @@
+﻿  cipher.c
+c:\users\hannah\source\repos\csci 112 cipherlab\csci 112 cipherlab\cipher.c(96): warning C4013: 'exit' undefined; assuming extern returning int
+c:\users\hannah\source\repos\csci 112 cipherlab\csci 112 cipherlab\cipher.c(108): warning C4047: '<=': 'char [1000]' differs in levels of indirection from 'int'
+c:\users\hannah\source\repos\csci 112 cipherlab\csci 112 cipherlab\cipher.c(117): warning C4715: 'processFile': not all control paths return a value
+  CSCI 112 cipherLab.vcxproj -> C:\Users\Hannah\source\repos\CSCI 112 cipherLab\Debug\CSCI 112 cipherLab.exe
+  CSCI 112 cipherLab.vcxproj -> C:\Users\Hannah\source\repos\CSCI 112 cipherLab\Debug\CSCI 112 cipherLab.pdb (Full PDB)
