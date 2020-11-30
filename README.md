@@ -1,2 +1,2 @@
 # scuttlebugg.github.io
-GitHub Pages playspace
+Intro to Programming in C
